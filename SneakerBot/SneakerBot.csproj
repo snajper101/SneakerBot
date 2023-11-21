@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{128B255D-DC62-448C-BBB1-D89A16FEA186}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SneakerBot</RootNamespace>
+    <AssemblyName>SneakerBot</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.3.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.3.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="FlatUI">
+      <HintPath>..\..\Komado\Faktury\Faktury\FlatUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.6.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.6.1\lib\net45\Google.Protobuf.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.17.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.17\lib\net452\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebDriver, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.WebDriver.3.141.0\lib\net45\WebDriver.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver.Support, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.Support.3.141.0\lib\net45\WebDriver.Support.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AuthLib\Handle\HandleAccounts.cs" />
+    <Compile Include="AuthLib\Handle\HandleAdmin.cs" />
+    <Compile Include="AuthLib\Handle\HandleProxy.cs" />
+    <Compile Include="AuthLib\Handle\HandleSupport.cs" />
+    <Compile Include="AuthLib\Handle\HandleTasks.cs" />
+    <Compile Include="AuthLib\Types\Account.cs" />
+    <Compile Include="AuthLib\Types\BillingProfile.cs" />
+    <Compile Include="AuthLib\Types\Proxy.cs" />
+    <Compile Include="AuthLib\Types\Support\SupportReply.cs" />
+    <Compile Include="AuthLib\Types\Support\SupportTicket.cs" />
+    <Compile Include="AuthLib\Types\Task.cs" />
+    <Compile Include="Forms\Accounts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Accounts.Designer.cs">
+      <DependentUpon>Accounts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Add_Account.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Add_Account.Designer.cs">
+      <DependentUpon>Add_Account.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Add_Billings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Add_Billings.Designer.cs">
+      <DependentUpon>Add_Billings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Add_Proxy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Add_Proxy.Designer.cs">
+      <DependentUpon>Add_Proxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Add_Task.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Add_Task.Designer.cs">
+      <DependentUpon>Add_Task.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AuthLib\Functions\Client\API.cs" />
+    <Compile Include="AuthLib\Functions\Embedded Resources\EmbeddedAssembly.cs" />
+    <Compile Include="AuthLib\Functions\Profiles\Profiles.cs" />
+    <Compile Include="AuthLib\Handle\HandleNotifications.cs" />
+    <Compile Include="AuthLib\Handle\HandleVersion.cs" />
+    <Compile Include="AuthLib\Tokens\GenerateToken.cs" />
+    <Compile Include="AuthLib\Functions\Client\Client.cs" />
+    <Compile Include="AuthLib\Handle\HandleRealese.cs" />
+    <Compile Include="AuthLib\Types\Notification.cs" />
+    <Compile Include="AuthLib\Types\Profile.cs" />
+    <Compile Include="Forms\Billings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Billings.Designer.cs">
+      <DependentUpon>Billings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CreateTicket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreateTicket.Designer.cs">
+      <DependentUpon>CreateTicket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Create_Checkout_Profile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Create_Checkout_Profile.Designer.cs">
+      <DependentUpon>Create_Checkout_Profile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Proxy_List.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Proxy_List.Designer.cs">
+      <DependentUpon>Proxy_List.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Support.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Support.Designer.cs">
+      <DependentUpon>Support.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Bilings_Delivery.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Bilings_Delivery.Designer.cs">
+      <DependentUpon>Bilings_Delivery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Bilings_General.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Bilings_General.Designer.cs">
+      <DependentUpon>Bilings_General.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Billings_Billing.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Billings_Billing.Designer.cs">
+      <DependentUpon>Billings_Billing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Billings_Payment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Billings_Payment.Designer.cs">
+      <DependentUpon>Billings_Payment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\LicenceCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LicenceCheck.Designer.cs">
+      <DependentUpon>LicenceCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Notifications.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Notifications.Designer.cs">
+      <DependentUpon>Notifications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GUI.Designer.cs">
+      <DependentUpon>GUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LoadData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LoadData.Designer.cs">
+      <DependentUpon>LoadData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Tag.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Tag.Designer.cs">
+      <DependentUpon>Tag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WebSitesAPI\NikeAPI.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Forms\Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Register.Designer.cs">
+      <DependentUpon>Register.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Task.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Task.Designer.cs">
+      <DependentUpon>Task.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UpdateBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UpdateBox.Designer.cs">
+      <DependentUpon>UpdateBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\WaitForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\WaitForm.Designer.cs">
+      <DependentUpon>WaitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WebSitesAPI\SupremeAPI.cs" />
+    <EmbeddedResource Include="Forms\Accounts.resx">
+      <DependentUpon>Accounts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Add_Account.resx">
+      <DependentUpon>Add_Account.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Add_Billings.resx">
+      <DependentUpon>Add_Billings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Add_Proxy.resx">
+      <DependentUpon>Add_Proxy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Add_Task.resx">
+      <DependentUpon>Add_Task.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Billings.resx">
+      <DependentUpon>Billings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreateTicket.resx">
+      <DependentUpon>CreateTicket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Create_Checkout_Profile.resx">
+      <DependentUpon>Create_Checkout_Profile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Proxy_List.resx">
+      <DependentUpon>Proxy_List.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Support.resx">
+      <DependentUpon>Support.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Bilings_Delivery.resx">
+      <DependentUpon>Bilings_Delivery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Bilings_General.resx">
+      <DependentUpon>Bilings_General.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Billings_Billing.resx">
+      <DependentUpon>Billings_Billing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Billings_Payment.resx">
+      <DependentUpon>Billings_Payment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\GUI.resx">
+      <DependentUpon>GUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LicenceCheck.resx">
+      <DependentUpon>LicenceCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Notifications.resx">
+      <DependentUpon>Notifications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LoadData.resx">
+      <DependentUpon>LoadData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Tag.resx">
+      <DependentUpon>Tag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Forms\Register.resx">
+      <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Task.resx">
+      <DependentUpon>Task.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UpdateBox.resx">
+      <DependentUpon>UpdateBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\WaitForm.resx">
+      <DependentUpon>WaitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Config\packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Config\App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Logo.ico" />
+    <None Include="Resources\delete_20px.png" />
+    <None Include="Resources\pause_20px.png" />
+    <None Include="Resources\play_20px_yellow.png" />
+    <None Include="Resources\play_20px.png" />
+    <None Include="Resources\filled_circle_20px_green.png" />
+    <None Include="Resources\filled_circle_20px_red.png" />
+    <None Include="Resources\filled_circle_20px_white.png" />
+    <None Include="Resources\filled_circle_20px.png" />
+    <None Include="Resources\Icon1.ico" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.76.0.3809.12600\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.76.0.3809.12600\build\Selenium.WebDriver.ChromeDriver.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Ten projekt zawiera odwołania do pakietów NuGet, których nie ma na tym komputerze. Użyj przywracania pakietów NuGet, aby je pobrać. Aby uzyskać więcej informacji, zobacz http://go.microsoft.com/fwlink/?LinkID=322105. Brakujący plik: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Selenium.WebDriver.ChromeDriver.76.0.3809.12600\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.ChromeDriver.76.0.3809.12600\build\Selenium.WebDriver.ChromeDriver.targets'))" />
+  </Target>
+</Project>
